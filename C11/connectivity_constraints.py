@@ -59,7 +59,7 @@ if __name__ == '__main__':
         kng = kneighbors_graph(X, i)
         ac1 = AgglomerativeClustering(n_clusters=20, connectivity=kng, linkage='average')
         Y_pred = ac1.fit_predict(X)
-        print('Silohouette score (k=%d): %.3f' % (i, silhouette_score(X, Y_pred)))
+        print('Silhouette score (k=%d): %.3f' % (i, silhouette_score(X, Y_pred)))
         acc.append(ac1)
 
     # Show the four plots
