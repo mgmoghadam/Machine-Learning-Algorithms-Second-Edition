@@ -48,7 +48,7 @@ if __name__ == '__main__':
     ac = AgglomerativeClustering(n_clusters=8, linkage='complete')
     Y_pred = ac.fit_predict(X)
 
-    print('Silohouette score (Complete): %.3f' % silhouette_score(X, Y_pred))
+    print('Silhouette score (Complete): %.3f' % silhouette_score(X, Y_pred))
     print('Adjusted Rand score (Complete): %.3f' % adjusted_rand_score(Y, Y_pred))
 
     # Show the clustered dataset
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     ac = AgglomerativeClustering(n_clusters=8, linkage='average')
     Y_pred = ac.fit_predict(X)
 
-    print('Silohouette score (Average): %.3f' % silhouette_score(X, Y_pred))
+    print('Silhouette score (Average): %.3f' % silhouette_score(X, Y_pred))
     print('Adjusted Rand score (Average): %.3f' % adjusted_rand_score(Y, Y_pred))
 
     # Show the clustered dataset
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     ac = AgglomerativeClustering(n_clusters=8)
     Y_pred = ac.fit_predict(X)
 
-    print('Silohouette score (Ward): %.3f' % silhouette_score(X, Y_pred))
+    print('Silhouette score (Ward): %.3f' % silhouette_score(X, Y_pred))
     print('Adjusted Rand score (Ward): %.3f' % adjusted_rand_score(Y, Y_pred))
 
     # Show the clustered dataset

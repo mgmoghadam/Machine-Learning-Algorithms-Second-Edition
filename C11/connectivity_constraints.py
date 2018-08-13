@@ -35,7 +35,7 @@ if __name__ == '__main__':
     ac = AgglomerativeClustering(n_clusters=20, linkage='average')
     Y_pred = ac.fit_predict(X)
 
-    print('Silohouette score: %.3f' % silhouette_score(X, Y_pred))
+    print('Silhouette score: %.3f' % silhouette_score(X, Y_pred))
 
     # Plot the clustered dataset
     fig, ax = plt.subplots(1, 1, figsize=(12, 10))
