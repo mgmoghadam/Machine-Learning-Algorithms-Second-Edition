@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
     # Create and train Spectral Clustering
     sc = SpectralClustering(n_clusters=2, affinity='nearest_neighbors')
-    Y = sc.fit_predict(X)
+    Ys = sc.fit_predict(X)
 
     # Show clustered dataset
     show_clustered_dataset(X, Y)
