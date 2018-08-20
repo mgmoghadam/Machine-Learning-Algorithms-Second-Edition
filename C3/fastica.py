@@ -2,7 +2,12 @@ from __future__ import print_function
 
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
+from shutil import copyfileobj
+from six.moves import urllib
+
+from sklearn.datasets.base import get_data_home
 from sklearn.datasets import fetch_mldata
 from sklearn.decomposition import FastICA
 
@@ -11,13 +16,29 @@ from sklearn.decomposition import FastICA
 np.random.seed(1000)
 
 
+# mldata.org can be subject to outages
+# Alternative original MNIST source (provided by Aurélien Geron)
+def fetch_mnist(data_home=None):
+    mnist_alternative_url = "https://github.com/amplab/datascience-sp14/raw/master/lab7/mldata/mnist-original.mat"
+    data_home = get_data_home(data_home=data_home)
+    data_home = os.path.join(data_home, 'mldata')
+    if not os.path.exists(data_home):
+        os.makedirs(data_home)
+    mnist_save_path = os.path.join(data_home, "mnist-original.mat")
+    if not os.path.exists(mnist_save_path):
+        mnist_url = urllib.request.urlopen(mnist_alternative_url)
+        with open(mnist_save_path, "wb") as matlab_file:
+            copyfileobj(mnist_url, matlab_file)
+
+
 def zero_center(Xd):
     return Xd - np.mean(Xd, axis=0)
 
 
 if __name__ == '__main__':
     # Load the dataset
-    digits = fetch_mldata('MNIST original')
+    mnist = fetch_mnist()
+    digits = fetch_mldata("MNIST original")
     X = zero_center(digits['data'].astype(np.float64))
     np.random.shuffle(X)
 
